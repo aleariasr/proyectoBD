@@ -14,13 +14,13 @@ Ubicación:
 
 Scripts:
 
-- 00_PreCheck_Azure.ps1
-- CIS_WS2025_Parte1_AccountPolicies.ps1
-- CIS_WS2025_Parte2_LocalPolicies.ps1
-- CIS_WS2025_Parte3_Firewall_Audit.ps1
-- CIS_WS2025_Parte4a_AdminTemplates.ps1
-- CIS_WS2025_Parte4b_AdminTemplates.ps1
-- Verify_CIS_WS2025_Status.ps1
+- [00_PreCheck_Azure.ps1](06_azure/hardening_scripts/00_PreCheck_Azure.ps1)
+- [Parte 1 - Account Policies](06_azure/hardening_scripts/CIS_WS2025_Parte1_AccountPolicies.ps1)
+- [Parte 2 - Local Policies](06_azure/hardening_scripts/CIS_WS2025_Parte2_LocalPolicies.ps1)
+- [Parte 3 - Firewall y Auditoría](06_azure/hardening_scripts/CIS_WS2025_Parte3_Firewall_Audit.ps1)
+- [Parte 4A - Administrative Templates](06_azure/hardening_scripts/CIS_WS2025_Parte4a_AdminTemplates.ps1)
+- [Parte 4B - Administrative Templates](06_azure/hardening_scripts/CIS_WS2025_Parte4b_AdminTemplates.ps1)
+- [Verificación CIS](06_azure/hardening_scripts/Verify_CIS_WS2025_Status.ps1)
 
 ## Reportes de verificación
 

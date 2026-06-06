@@ -43,7 +43,6 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 
 ## Documentación
 
-- [Arquitectura](02_documentacion/Arquitectura.md)
 - [Modelo de datos](02_documentacion/Modelo_Datos.md)
 - [Seguridad](02_documentacion/Seguridad.md)
 - [Evidencias](02_documentacion/Evidencias.md)
