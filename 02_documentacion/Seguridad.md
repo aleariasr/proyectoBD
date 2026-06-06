@@ -165,3 +165,9 @@ Evidencias:
 
 - [Reporte CSV CIS](../04_evidencias/Seguridad/CIS_WS2025/CIS_WS2025_Verification_20260428_172121.csv)
 - [Resumen TXT CIS](../04_evidencias/Seguridad/CIS_WS2025/CIS_WS2025_Verification_20260428_172121.txt)
+
+## Documentación relacionada
+
+- [Hardening SQL Server](Hardening_SQL_Server.md)
+- [Antimalware SQL Server](Antimalware_SQL_Server.md)
+- [Hardening CIS Windows Server](../06_azure/Hardening_CIS.md)

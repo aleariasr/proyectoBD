@@ -138,3 +138,7 @@ Evidencias:
 - [Seguridad](Seguridad.md)
 - [Discos y LUNs](../06_azure/Discos.md)
 - [Evidencias](Evidencias.md)
+- [Azure SQL Database](Azure_SQL_Database.md)
+- [Vector Search](Vector_Search.md)
+- [External API Calls](External_API_Calls.md)
+- [Expresiones Regulares](Regex_Avanzado.md)

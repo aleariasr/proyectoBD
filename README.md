@@ -49,6 +49,12 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 - [Evidencias](02_documentacion/Evidencias.md)
 - [Checklist de rúbrica](02_documentacion/Checklist_Rubrica.md)
 - [Estructura del repositorio](02_documentacion/Estructura_Repositorio.txt)
+- [Azure SQL Database](02_documentacion/Azure_SQL_Database.md)
+- [Vector Search](02_documentacion/Vector_Search.md)
+- [External API Calls](02_documentacion/External_API_Calls.md)
+- [Expresiones Regulares](02_documentacion/Regex_Avanzado.md)
+- [Hardening SQL Server](02_documentacion/Hardening_SQL_Server.md)
+- [Antimalware SQL Server](02_documentacion/Antimalware_SQL_Server.md)
 
 ## Azure e infraestructura
 
