@@ -2,41 +2,52 @@
 
 ## Objetivo
 
-Separar físicamente los distintos componentes de SQL Server para mejorar rendimiento, administración y recuperación.
+Separar físicamente componentes de SQL Server para mejorar rendimiento, administración y recuperación.
 
 ## Distribución implementada
 
-### Unidad E: SQLData
+| Unidad | Etiqueta | Uso |
+|---|---|---|
+| E: | SQLData | MDF, NDF, Memory Optimized |
+| F: | SQLLogs | Transaction Log |
+| G: | SQLTempDB | TempDB |
+| H: | SQLBackups | Backups y Auditoría |
+
+Evidencia:
+
+![Distribución de unidades](../04_evidencias/Azure/01_Distribucion_Unidades.jpeg)
+
+## Unidad E: SQLData
 
 Formato: NTFS  
 Allocation Unit Size: 64 KB
 
 Contiene:
 
-- Archivo MDF principal
-- Filegroup FG_SIGAU_CORE
-- Filegroup FG_SIGAU_ACADEMICO
-- Filegroup FG_SIGAU_SEGURIDAD
-- Filegroup Memory Optimized
+- SIGAU_Primary.mdf
+- SIGAU_Core_01.ndf
+- SIGAU_Academico_01.ndf
+- SIGAU_Seguridad_01.ndf
+- MemoryOptimized
 
 Ruta:
 
 E:\SQLServer\Data\SIGAU
 
-### Unidad F: SQLLogs
+## Unidad F: SQLLogs
 
 Formato: NTFS  
 Allocation Unit Size: 64 KB
 
 Contiene:
 
-- Transaction Log (.ldf)
+- SIGAU_Log.ldf
 
 Ruta:
 
 F:\SQLServer\Logs\SIGAU
 
-### Unidad G: SQLTempDB
+## Unidad G: SQLTempDB
 
 Formato: NTFS  
 Allocation Unit Size: 64 KB
@@ -51,7 +62,7 @@ Ruta:
 
 G:\SQLServer\TempDB
 
-### Unidad H: SQLBackups
+## Unidad H: SQLBackups
 
 Formato: NTFS  
 Allocation Unit Size: 64 KB
@@ -67,13 +78,8 @@ H:\SQLServer\Backups\SIGAU
 
 H:\SQLServer\Audit\SIGAU
 
-## Verificación
+## Validación SQL Server
 
-La configuración fue validada mediante consultas a:
+Evidencia de archivos físicos:
 
-- sys.database_files
-- sys.filegroups
-- Get-Volume
-- Get-ChildItem
-
-confirmando la correcta separación física de archivos.
+![Filegroups y archivos](../04_evidencias/SQLServer/01_Distribucion_Filegroups.jpeg)

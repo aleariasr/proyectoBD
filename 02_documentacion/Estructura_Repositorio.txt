@@ -1,0 +1,68 @@
+.
+├── 01_enunciado
+│   ├── CIS_SQL_Server_2022_Benchmark_v1_2_1.pdf
+│   ├── CIS_Windows_Server_2025_Benchmark_v2_0_0.pdf
+│   └── IF5100_Proyecto_Enunciado.pdf
+├── 02_documentacion
+│   ├── Arquitectura.md
+│   ├── Checklist_Rubrica.md
+│   ├── Evidencias.md
+│   ├── Modelo_Datos.md
+│   └── Seguridad.md
+├── 03_sql
+│   ├── 01_creacion
+│   │   └── 01_SIGAU_CreacionBD_v1_0.sql
+│   ├── 02_poblacion
+│   │   ├── 01_DatosMaestros.sql
+│   │   ├── 02_DatosAcademicos.sql
+│   │   └── 03_DatosAdministrativos.sql
+│   ├── 03_seguridad
+│   │   ├── 01_Roles.sql
+│   │   ├── 02_RLS.sql
+│   │   └── 03_DynamicDataMasking.sql
+│   ├── 04_auditoria
+│   │   └── 01_Audit_SIGAU.sql
+│   ├── 05_backup_restore
+│   │   ├── 01_Backup_Completo.sql
+│   │   └── 02_Restore.sql
+│   ├── 06_json_api_vector
+│   │   ├── 01_JSON.sql
+│   │   ├── 02_REST_API.sql
+│   │   └── 03_VectorSearch.sql
+│   └── 07_validaciones
+│       └── 01_Pruebas_Finales.sql
+├── 04_evidencias
+│   ├── Auditoria
+│   ├── Azure
+│   ├── Backups
+│   │   ├── 01_Backup_Completo_SIGAU.jpeg
+│   │   └── 02_Restore_Test_SIGAU.jpeg
+│   ├── Pruebas
+│   │   ├── 01_Conteo_Registros_Tablas.jpeg
+│   │   └── 02_Exportacion_JSON_Personas.jpeg
+│   ├── SQLServer
+│   └── Seguridad
+│       ├── 01_DynamicDataMasking.jpeg
+│       ├── 02_RowLevelSecurity.jpeg
+│       └── CIS_WS2025
+│           ├── CIS_WS2025_Verification_20260428_172121.csv
+│           └── CIS_WS2025_Verification_20260428_172121.txt
+├── 05_backups
+├── 06_azure
+│   ├── Configuracion_VM.md
+│   ├── Discos.md
+│   ├── Hardening_CIS.md
+│   └── hardening_scripts
+│       ├── 00_PreCheck_Azure.ps1
+│       ├── CIS_WS2025_Parte1_AccountPolicies.ps1
+│       ├── CIS_WS2025_Parte2_LocalPolicies.ps1
+│       ├── CIS_WS2025_Parte3_Firewall_Audit.ps1
+│       ├── CIS_WS2025_Parte4a_AdminTemplates.ps1
+│       ├── CIS_WS2025_Parte4b_AdminTemplates.ps1
+│       └── Verify_CIS_WS2025_Status.ps1
+├── 07_pruebas
+│   └── Validaciones.md
+├── README.md
+└── estructura.txt
+
+23 directories, 43 files

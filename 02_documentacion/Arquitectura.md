@@ -1,65 +1,62 @@
 # Arquitectura del Proyecto SIGAU
 
-## Descripción General
+## Descripción general
 
-SIGAU (Sistema Integral de Gestión Académica Universitaria) fue diseñado bajo una arquitectura lógica orientada a capas dentro de Microsoft SQL Server 2025, separando componentes funcionales, seguridad y almacenamiento físico para mejorar mantenibilidad, rendimiento y escalabilidad.
+SIGAU fue diseñado sobre Microsoft SQL Server 2025 con una arquitectura lógica por esquemas y una arquitectura física basada en filegroups y unidades separadas.
 
-## Arquitectura Lógica
+El objetivo de esta arquitectura es separar responsabilidades, facilitar mantenimiento, mejorar trazabilidad y aplicar mejores prácticas de administración de bases de datos.
 
-Usuarios
+## Arquitectura lógica
 
-↓
+Flujo lógico:
 
-Roles de Seguridad
+Usuarios  
+↓  
+Roles de seguridad  
+↓  
+Vistas y procedimientos almacenados  
+↓  
+Esquemas de negocio  
+↓  
+Tablas  
+↓  
+Filegroups  
+↓  
+Almacenamiento físico
 
-↓
-
-Vistas y Procedimientos Almacenados
-
-↓
-
-Esquemas de Negocio
-
-↓
-
-Tablas
-
-↓
-
-Filegroups Especializados
-
-↓
-
-Almacenamiento Físico
-
-## Esquemas Implementados
+## Esquemas implementados
 
 ### core
 
-Contiene información base institucional:
+Contiene datos base institucionales:
 
 - Persona
 - Sede
-- Tipos de identificación
-- Direcciones
-- Medios de contacto
+- TipoIdentificacion
+- TipoDireccion
+- TipoMedioContacto
+- IdentificacionPersona
+- DireccionPersona
+- MedioContactoPersona
 
 ### academico
 
-Gestiona la operación académica:
+Contiene la operación académica:
 
 - Escuela
-- Plan de estudio
-- Curso
-- Grupo
-- Matrícula
-- Historial académico
+- PlanEstudio
 - Profesor
 - Estudiante
+- PeriodoLectivo
+- Curso
+- RequisitoCurso
+- Grupo
+- Matricula
+- HistorialAcademico
 
 ### admin
 
-Gestiona procesos administrativos:
+Contiene la operación administrativa:
 
 - UnidadAdministrativa
 - Administrativo
@@ -67,75 +64,77 @@ Gestiona procesos administrativos:
 
 ### seguridad
 
-Componentes de seguridad:
+Contiene objetos de seguridad:
 
 - UsuarioSede
 - BitacoraAcceso
-- Row Level Security
-- Auditoría
+- Función de filtrado RLS
+- Políticas de seguridad
 
 ### api
 
-Integración externa:
+Contiene objetos de integración:
 
 - ConsultaExterna
-- Procedimientos REST
-- Exportación JSON
+- Procedimiento de consumo REST
+- Procedimiento de exportación JSON
 
 ### consulta
 
-Vistas de acceso para usuarios finales.
+Contiene vistas de acceso para usuarios finales. La rúbrica exige que las consultas se realicen mediante vistas, por lo que se creó al menos una vista por tabla.
 
-## Arquitectura Física
+## Arquitectura física
 
-La base de datos fue distribuida utilizando múltiples filegroups.
+La base de datos utiliza múltiples filegroups:
 
-### FG_SIGAU_CORE
+| Filegroup | Uso |
+|---|---|
+| PRIMARY | Archivo principal |
+| FG_SIGAU_CORE | Datos institucionales principales |
+| FG_SIGAU_ACADEMICO | Datos académicos |
+| FG_SIGAU_SEGURIDAD | Datos de seguridad |
+| FG_SIGAU_MEMORY_OPTIMIZED | Objetos In-Memory OLTP |
 
-Información institucional principal.
+## Distribución por unidades
 
-### FG_SIGAU_ACADEMICO
+| Unidad | Uso |
+|---|---|
+| E: | MDF, NDF y Memory Optimized |
+| F: | Transaction Logs |
+| G: | TempDB |
+| H: | Backups y Auditoría |
 
-Información académica.
+Evidencia:
 
-### FG_SIGAU_SEGURIDAD
+![Distribución de filegroups](../04_evidencias/SQLServer/01_Distribucion_Filegroups.jpeg)
 
-Objetos relacionados con seguridad.
+## Recovery Model
 
-### FG_SIGAU_MEMORY_OPTIMIZED
+SIGAU utiliza Recovery Model FULL para soportar estrategias de respaldo y recuperación.
 
-Datos In-Memory OLTP.
+Evidencia:
 
-## Distribución de almacenamiento
+![Recovery Model](../04_evidencias/SQLServer/02_RecoveryModel_FULL.jpeg)
 
-### Unidad E
+## In-Memory OLTP
 
-Datos principales:
+La tabla `seguridad.BitacoraAcceso` fue creada como tabla In-Memory con durabilidad `SCHEMA_AND_DATA`.
 
-- MDF
-- NDF
-- Memory Optimized
+Esto permite registrar eventos de acceso con menor latencia y cumple el requisito de gestión In-Memory.
 
-### Unidad F
+## Backup y Restore
 
-Transaction Logs.
+La base de datos fue respaldada mediante `BACKUP DATABASE` y restaurada en una base de prueba llamada `SIGAU_RESTORE_TEST`.
 
-### Unidad G
+Evidencias:
 
-TempDB.
+![Backup](../04_evidencias/Backups/01_Backup_Completo_SIGAU.jpeg)
 
-### Unidad H
+![Restore](../04_evidencias/Backups/02_Restore_Test_SIGAU.jpeg)
 
-Backups y Auditoría.
+## Documentos relacionados
 
-## Componentes avanzados implementados
-
-- Dynamic Data Masking
-- Row Level Security
-- SQL Server Audit
-- In-Memory OLTP
-- JSON
-- REST API
-- Vector Search
-- Filegroups especializados
-- Roles personalizados
+- [Modelo de datos](Modelo_Datos.md)
+- [Seguridad](Seguridad.md)
+- [Discos y LUNs](../06_azure/Discos.md)
+- [Evidencias](Evidencias.md)

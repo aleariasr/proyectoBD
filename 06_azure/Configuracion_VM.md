@@ -2,7 +2,7 @@
 
 ## Plataforma
 
-La infraestructura del proyecto SIGAU fue implementada sobre una máquina virtual en Microsoft Azure, utilizando Windows Server 2025 como sistema operativo base.
+La infraestructura del proyecto SIGAU fue implementada sobre una máquina virtual en Microsoft Azure con Windows Server 2025 como sistema operativo base.
 
 ## Servidor
 
@@ -12,23 +12,25 @@ myVm
 
 ## Usuario operativo
 
-Durante la administración de la máquina virtual se utilizó el usuario:
+Cuenta utilizada para administración:
 
 myVm\adminbackup
 
-Este usuario fue creado para evitar el uso continuo del usuario administrativo original y reducir la dependencia operativa sobre una única cuenta.
+Esta cuenta se creó para evitar el uso continuo del usuario administrativo original.
 
-## Usuarios locales identificados
-
-Durante la validación del sistema se identificaron los siguientes usuarios locales relevantes:
+## Usuarios locales relevantes
 
 - adminbackup: usuario operativo principal.
 - sigauadmin: usuario administrativo original, actualmente deshabilitado.
-- sqlsvc: usuario de servicio asociado a SQL Server.
-- sqlagent: usuario de servicio asociado a SQL Server Agent.
+- sqlsvc: cuenta de servicio de SQL Server.
+- sqlagent: cuenta de servicio de SQL Server Agent.
 - ProjectDB_Guest: usuario invitado deshabilitado.
 - DefaultAccount: cuenta integrada deshabilitada.
 - WDAGUtilityAccount: cuenta integrada deshabilitada.
+
+Evidencia:
+
+![Usuarios locales](../04_evidencias/Azure/02_Usuarios_Locales.jpeg)
 
 ## Grupos locales
 
@@ -39,22 +41,18 @@ Miembros identificados:
 - adminbackup
 - sigauadmin
 
+Evidencia:
+
+![Administrators](../04_evidencias/Azure/03_Administrators_Group.jpeg)
+
 ### Remote Desktop Users
 
 Miembros identificados:
 
 - adminbackup
 
-## Justificación
+## Criterio aplicado
 
-El uso del usuario adminbackup permite administrar la máquina virtual mediante RDP sin depender del usuario inicial de aprovisionamiento. Además, el usuario sigauadmin se mantiene deshabilitado como medida de reducción de superficie de acceso.
+El usuario `adminbackup` permite administrar la máquina mediante RDP sin depender del usuario inicial de aprovisionamiento. La cuenta `sigauadmin` se mantiene deshabilitada para reducir superficie de exposición.
 
 No se documentan contraseñas ni credenciales dentro del repositorio.
-
-## Gestión de cuentas administrativas
-
-Durante la implementación se creó una cuenta administrativa secundaria denominada adminbackup.
-
-La cuenta original sigauadmin fue deshabilitada posteriormente y se mantuvo únicamente para contingencia.
-
-La administración diaria del servidor se realiza mediante la cuenta adminbackup, reduciendo la exposición de la cuenta inicial utilizada durante el aprovisionamiento de la máquina virtual.

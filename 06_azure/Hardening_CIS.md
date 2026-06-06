@@ -2,17 +2,17 @@
 
 ## Benchmark utilizado
 
-Para el endurecimiento del sistema operativo se utilizó como referencia:
+Se utilizó como referencia:
 
 CIS Microsoft Windows Server 2025 Benchmark v2.0.0
 
-## Ubicación de scripts utilizados
+## Scripts utilizados
 
-Los scripts de hardening se almacenan en el repositorio en:
+Ubicación:
 
 06_azure/hardening_scripts
 
-Scripts identificados:
+Scripts:
 
 - 00_PreCheck_Azure.ps1
 - CIS_WS2025_Parte1_AccountPolicies.ps1
@@ -22,44 +22,35 @@ Scripts identificados:
 - CIS_WS2025_Parte4b_AdminTemplates.ps1
 - Verify_CIS_WS2025_Status.ps1
 
-## Reporte de verificación
+## Reportes de verificación
 
-El reporte más reciente identificado corresponde a:
-
-CIS_WS2025_Verification_20260428_172121.csv
-
-También se generó un resumen en formato TXT:
-
-CIS_WS2025_Verification_20260428_172121.txt
-
-Estos archivos se almacenan como evidencia en:
-
-04_evidencias/Seguridad/CIS_WS2025
+- [Reporte CSV](../04_evidencias/Seguridad/CIS_WS2025/CIS_WS2025_Verification_20260428_172121.csv)
+- [Resumen TXT](../04_evidencias/Seguridad/CIS_WS2025/CIS_WS2025_Verification_20260428_172121.txt)
 
 ## Controles aplicados
 
-El proceso de hardening incluyó controles asociados a:
+El proceso incluyó:
 
 - Políticas de cuentas.
 - Políticas locales.
 - Firewall de Windows.
 - Auditoría.
 - Plantillas administrativas.
-- Revisión de estado mediante script de verificación.
+- Verificación de estado mediante script.
 
-## Excepciones documentadas
+## Excepciones justificadas
 
-Algunos controles no fueron aplicados por tratarse de una máquina virtual standalone en Azure, sin dominio Active Directory y con necesidad de acceso remoto mediante RDP.
+Algunos controles no fueron aplicados debido a que el entorno es una VM standalone en Azure, sin dominio Active Directory y con necesidad de acceso RDP.
 
-Entre las excepciones principales se incluyen:
+Excepciones principales:
 
-- Controles de User Rights Assignment que podrían afectar el acceso remoto.
-- Restricciones avanzadas de Remote Desktop Services que requieren certificados o dominio.
-- Controles dependientes de Active Directory, como LAPS.
-- Controles de Device Guard, VBS o Credential Guard sujetos a soporte de virtualización.
-- Restricciones de IPv6 que podrían afectar servicios internos de Azure.
+- User Rights Assignment que podría afectar el acceso remoto.
+- Configuraciones avanzadas de Remote Desktop Services que requieren certificados o dominio.
+- LAPS, por depender de Active Directory.
+- Device Guard, VBS o Credential Guard, por soporte de virtualización.
+- Restricciones de IPv6, por posibles dependencias internas de Azure.
 - Políticas de firewall que podrían bloquear conectividad administrativa.
 
 ## Criterio aplicado
 
-El hardening se aplicó buscando equilibrio entre seguridad, disponibilidad y compatibilidad con Azure. Las excepciones se consideran justificadas por el contexto académico, el tipo de infraestructura y la necesidad de mantener acceso administrativo seguro.
+Se priorizó equilibrio entre seguridad, disponibilidad y compatibilidad con Azure.
