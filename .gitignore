@@ -1,0 +1,14 @@
+*.bak
+*.trn
+*.dif
+*.sqlaudit
+*.xel
+*.trc
+*.log
+*.tmp
+
+05_backups/*
+!05_backups/.gitkeep
+
+.DS_Store
+.vscode/
