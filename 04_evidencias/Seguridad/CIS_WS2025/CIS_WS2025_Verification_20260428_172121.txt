@@ -1,0 +1,6 @@
+﻿FAIL: 56
+INFO: 1
+PASS: 264
+
+Detalle CSV: C:\CIS_Hardening\Reports\CIS_WS2025_Verification_20260428_172121.csv
+Security export: C:\CIS_Hardening\Reports\security_policy_current_20260428_172121.cfg
