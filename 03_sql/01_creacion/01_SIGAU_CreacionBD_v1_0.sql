@@ -612,7 +612,7 @@ GO
 CREATE SECURITY POLICY seguridad.Policy_EscuelaPorSede
 ADD FILTER PREDICATE seguridad.fn_FiltroSede(SedeID)
 ON academico.Escuela
-WITH (STATE =N);
+WITH (STATE =ON);
 GO
 
 CREATE SECURITY POLICY seguridad.Policy_UnidadPorSede
