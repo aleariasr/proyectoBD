@@ -149,6 +149,6 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 | Backup completo | Implementado |
 | Restore de prueba | Implementado |
 | JSON | Implementado |
-| REST API | En proceso |
-| Vector Search | En proceso |
-| Azure SQL Database PaaS | Pendiente |
+| REST API | Implementado |
+| Vector Search | Implementado |
+| Azure SQL Database PaaS | Implementado |
