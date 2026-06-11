@@ -102,3 +102,22 @@ Backup completo de SIGAU almacenado en la unidad H.
 ![Restore de prueba](../04_evidencias/Backups/02_Restore_Test_SIGAU.jpeg)
 
 Restauración completa en la base SIGAU_RESTORE_TEST.
+
+Funcionalidades Modernas
+
+REST API
+
+Demuestra el consumo de servicios REST externos mediante sp_invoke_external_rest_endpoint utilizando JSONPlaceholder y obteniendo respuesta HTTP 200 satisfactoria.
+
+Vector Search
+
+Demuestra el almacenamiento de embeddings mediante el tipo VECTOR y la búsqueda semántica utilizando distancia vectorial sobre los cursos registrados en SIGAU.
+
+Expresiones Regulares Avanzadas
+
+Demuestra el uso de REGEXP_LIKE para validar correos electrónicos, números de identificación y carnés universitarios utilizando las capacidades nativas de SQL Server 2025.
+
+Azure SQL Database PaaS
+
+Demuestra la ejecución de SIGAU sobre Azure SQL Database, validando la conexión al servicio, la existencia de los datos y la ejecución correcta de consultas sobre la plataforma PaaS.
+
