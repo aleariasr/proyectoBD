@@ -107,21 +107,21 @@ Restauración completa en la base SIGAU_RESTORE_TEST.
 
 ### REST API
 
-![REST API](../04_evidencias/Pruebas/03_REST_API.jpeg)
+![REST API](../04_evidencias/Pruebas/03_REST_API.png)
 
 Demuestra el consumo de servicios REST externos mediante sp_invoke_external_rest_endpoint, utilizando JSONPlaceholder y obteniendo una respuesta HTTP 200 satisfactoria.
 
 ### Vector Search
 
-![Vector Search](../04_evidencias/Pruebas/04_Vector_Search.jpeg)
+![Vector Search](../04_evidencias/Pruebas/04_Vector_Search.png)
 
 Demuestra el almacenamiento de embeddings mediante el tipo VECTOR y la búsqueda semántica utilizando distancia vectorial sobre los cursos registrados en SIGAU.
 
 ### Expresiones Regulares Avanzadas
 
-![Expresiones Regulares](../04_evidencias/Pruebas/05_Regex_Avanzado_01.jpeg)
-![Expresiones Regulares](../04_evidencias/Pruebas/06_Regex_Avanzado_02.jpeg)
-![Expresiones Regulares](../04_evidencias/Pruebas/07_Regex_Avanzado_03.jpeg)
+![Expresiones Regulares](../04_evidencias/Pruebas/05_Regex_Avanzado_01.png)
+![Expresiones Regulares](../04_evidencias/Pruebas/06_Regex_Avanzado_02.png)
+![Expresiones Regulares](../04_evidencias/Pruebas/07_Regex_Avanzado_03.png)
 
 Demuestra el uso de REGEXP_LIKE para validar correos electrónicos, números de identificación y carnés universitarios utilizando las capacidades nativas de SQL Server 2025.
 
@@ -129,7 +129,7 @@ Demuestra el uso de REGEXP_LIKE para validar correos electrónicos, números de 
 
 ### Implementación en Azure SQL Database
 
-![Azure SQL Database](../04_evidencias/Azure/04_Azure_SQL_Database.jpeg)
+![Azure SQL Database](../04_evidencias/Azure/04_Azure_SQL_Database.png)
 
 Demuestra la ejecución de SIGAU sobre Azure SQL Database, validando la conexión al servicio, la existencia de los datos y la ejecución correcta de consultas sobre la plataforma PaaS.
 
