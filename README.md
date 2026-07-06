@@ -129,8 +129,6 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 
 Demuestra el despliegue de SIGAU sobre Azure SQL Database.
 
----
-
 ### Tablas
 
 ![Tablas Azure](../04_evidencias/AzureSQL/02_Tablas_Azure.png)
