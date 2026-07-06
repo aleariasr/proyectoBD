@@ -121,6 +121,40 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 
 ![Restore de prueba](04_evidencias/Backups/02_Restore_Test_SIGAU.jpeg)
 
+## Azure SQL Database
+
+### Base desplegada
+
+![Base Azure](../04_evidencias/AzureSQL/01_Base_SIGAU_Azure.png)
+
+Demuestra el despliegue de SIGAU sobre Azure SQL Database.
+
+---
+
+### Tablas
+
+![Tablas Azure](../04_evidencias/AzureSQL/02_Tablas_Azure.png)
+
+Demuestra la creación de todas las tablas en Azure SQL Database.
+
+### Vistas
+
+![Vistas Azure](../04_evidencias/AzureSQL/03_Vistas_Azure.png)
+
+Demuestra la migración de las vistas.
+
+### Procedimientos almacenados
+
+![Procedimientos Azure](../04_evidencias/AzureSQL/04_Procedimientos_Azure.png)
+
+Demuestra la migración de los procedimientos almacenados.
+
+### Datos
+
+![Datos Azure](../04_evidencias/AzureSQL/05_Datos_Azure.png)
+
+Demuestra que los datos fueron migrados correctamente.
+
 ## Distribución de almacenamiento
 
 | Unidad | Propósito |
