@@ -123,35 +123,35 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 
 ## Azure SQL Database
 
-### Base desplegada
+### Base de datos desplegada
 
 ![Base Azure](../04_evidencias/AzureSQL/01_Base_SIGAU_Azure.png)
 
-Demuestra el despliegue de SIGAU sobre Azure SQL Database.
+Demuestra el despliegue exitoso de la base de datos **SIGAU** sobre Azure SQL Database.
 
-### Tablas
+### Tablas migradas
 
 ![Tablas Azure](../04_evidencias/AzureSQL/02_Tablas_Azure.png)
 
-Demuestra la creación de todas las tablas en Azure SQL Database.
+Evidencia que todas las tablas fueron creadas correctamente en Azure SQL Database.
 
 ### Vistas
 
 ![Vistas Azure](../04_evidencias/AzureSQL/03_Vistas_Azure.png)
 
-Demuestra la migración de las vistas.
+Demuestra que las vistas fueron migradas correctamente a Azure SQL Database.
 
 ### Procedimientos almacenados
 
 ![Procedimientos Azure](../04_evidencias/AzureSQL/04_Procedimientos_Azure.png)
 
-Demuestra la migración de los procedimientos almacenados.
+Demuestra la migración de los procedimientos almacenados a Azure SQL Database.
 
-### Datos
+### Datos migrados
 
 ![Datos Azure](../04_evidencias/AzureSQL/05_Datos_Azure.png)
 
-Demuestra que los datos fueron migrados correctamente.
+Evidencia que los datos fueron migrados correctamente y que las tablas contienen información en Azure SQL Database.
 
 ## Distribución de almacenamiento
 
