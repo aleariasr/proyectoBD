@@ -24,17 +24,17 @@ IF DATABASE_PRINCIPAL_ID(N'LecturaGeneral') IS NULL
 GO
 
 /* Eliminar permisos de lectura directa heredados de versiones anteriores */
-DENY SELECT ON SCHEMA::core TO Administrativo;
-DENY SELECT ON SCHEMA::academico TO Administrativo;
-DENY SELECT ON SCHEMA::admin TO Administrativo;
-DENY SELECT ON SCHEMA::seguridad TO Administrativo;
-DENY SELECT ON SCHEMA::api TO Administrativo;
+REVOKE SELECT ON SCHEMA::core FROM Administrativo;
+REVOKE SELECT ON SCHEMA::academico FROM Administrativo;
+REVOKE SELECT ON SCHEMA::admin FROM Administrativo;
+REVOKE SELECT ON SCHEMA::seguridad FROM Administrativo;
+REVOKE SELECT ON SCHEMA::api FROM Administrativo;
 
-DENY SELECT ON SCHEMA::core TO Mantenimiento;
-DENY SELECT ON SCHEMA::academico TO Mantenimiento;
-DENY SELECT ON SCHEMA::admin TO Mantenimiento;
-DENY SELECT ON SCHEMA::seguridad TO Mantenimiento;
-DENY SELECT ON SCHEMA::api TO Mantenimiento;
+REVOKE SELECT ON SCHEMA::core FROM Mantenimiento;
+REVOKE SELECT ON SCHEMA::academico FROM Mantenimiento;
+REVOKE SELECT ON SCHEMA::admin FROM Mantenimiento;
+REVOKE SELECT ON SCHEMA::seguridad FROM Mantenimiento;
+REVOKE SELECT ON SCHEMA::api FROM Mantenimiento;
 GO
 
 /* =========================================================
@@ -66,7 +66,6 @@ GRANT SELECT ON SCHEMA::consulta TO Mantenimiento;
 GRANT INSERT, UPDATE, DELETE ON SCHEMA::core TO Mantenimiento;
 GRANT INSERT, UPDATE, DELETE ON SCHEMA::academico TO Mantenimiento;
 GRANT INSERT, UPDATE, DELETE ON SCHEMA::admin TO Mantenimiento;
-GRANT INSERT, UPDATE, DELETE ON SCHEMA::seguridad TO Mantenimiento;
 GRANT INSERT, UPDATE, DELETE ON SCHEMA::api TO Mantenimiento;
 
 GRANT EXECUTE ON SCHEMA::api TO Mantenimiento;

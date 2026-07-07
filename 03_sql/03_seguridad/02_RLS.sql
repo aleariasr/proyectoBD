@@ -14,6 +14,13 @@ GO
    Objetivo:
    Limitar la visibilidad de registros según la sede asignada
    al usuario de base de datos.
+
+   El script es repetible:
+   - crea la tabla solo si no existe;
+   - elimina las políticas antes de modificar la función;
+   - vuelve a crear las políticas activas;
+   - crea usuarios solo si no existen;
+   - actualiza o inserta los mapeos de sede.
    ========================================================= */
 
 
@@ -47,7 +54,39 @@ GO
 
 
 /* =========================================================
-   2. Función de filtrado por sede
+   2. Eliminar políticas anteriores
+
+   Las políticas deben eliminarse antes de modificar la función
+   debido a la dependencia creada mediante SCHEMABINDING.
+   ========================================================= */
+
+IF EXISTS
+(
+    SELECT 1
+    FROM sys.security_policies
+    WHERE name = N'Policy_EscuelaPorSede'
+      AND schema_id = SCHEMA_ID(N'seguridad')
+)
+BEGIN
+    DROP SECURITY POLICY seguridad.Policy_EscuelaPorSede;
+END;
+GO
+
+IF EXISTS
+(
+    SELECT 1
+    FROM sys.security_policies
+    WHERE name = N'Policy_UnidadPorSede'
+      AND schema_id = SCHEMA_ID(N'seguridad')
+)
+BEGIN
+    DROP SECURITY POLICY seguridad.Policy_UnidadPorSede;
+END;
+GO
+
+
+/* =========================================================
+   3. Función de filtrado por sede
 
    dbo puede consultar todas las sedes.
    Los demás usuarios solo pueden consultar las sedes
@@ -75,36 +114,6 @@ RETURN
               AND us.Estado = 1
         )
 );
-GO
-
-
-/* =========================================================
-   3. Eliminar políticas anteriores para permitir
-      una instalación repetible del script
-   ========================================================= */
-
-IF EXISTS
-(
-    SELECT 1
-    FROM sys.security_policies
-    WHERE name = N'Policy_EscuelaPorSede'
-      AND schema_id = SCHEMA_ID(N'seguridad')
-)
-BEGIN
-    DROP SECURITY POLICY seguridad.Policy_EscuelaPorSede;
-END;
-GO
-
-IF EXISTS
-(
-    SELECT 1
-    FROM sys.security_policies
-    WHERE name = N'Policy_UnidadPorSede'
-      AND schema_id = SCHEMA_ID(N'seguridad')
-)
-BEGIN
-    DROP SECURITY POLICY seguridad.Policy_UnidadPorSede;
-END;
 GO
 
 
@@ -141,7 +150,7 @@ GO
 /* =========================================================
    6. Usuarios de prueba sin login
 
-   Se crean solo si no existen.
+   Se crean solamente si no existen.
    ========================================================= */
 
 IF DATABASE_PRINCIPAL_ID(N'usuario_occidente') IS NULL
@@ -207,6 +216,7 @@ GO
    8. Mapeo de usuarios por sede
 
    Los SedeID corresponden a la implementación actual:
+
    1 = Occidente
    2 = Grecia
    3 = Tacares
@@ -257,7 +267,23 @@ GO
 
 
 /* =========================================================
-   9. Verificación de políticas
+   9. Verificación de mapeos
+   ========================================================= */
+
+SELECT
+    UsuarioSedeID,
+    UsuarioBD,
+    SedeID,
+    Estado
+FROM seguridad.UsuarioSede
+ORDER BY
+    UsuarioBD,
+    SedeID;
+GO
+
+
+/* =========================================================
+   10. Verificación de políticas
    ========================================================= */
 
 SELECT
@@ -270,7 +296,7 @@ SELECT
     spr.operation_desc,
     spr.predicate_definition
 FROM sys.security_policies AS sp
-JOIN sys.security_predicates AS spr
+INNER JOIN sys.security_predicates AS spr
     ON sp.object_id = spr.object_id
 WHERE sp.name IN
 (
@@ -285,7 +311,9 @@ GO
 
 
 /* =========================================================
-   10. Pruebas funcionales
+   11. Prueba funcional para usuario_grecia
+
+   Debe visualizar únicamente registros con SedeID = 2.
    ========================================================= */
 
 EXECUTE AS USER = N'usuario_grecia';
@@ -293,26 +321,40 @@ EXECUTE AS USER = N'usuario_grecia';
 SELECT
     USER_NAME() AS UsuarioActual;
 
-SELECT *
-FROM consulta.vw_Escuela;
+SELECT
+    *
+FROM consulta.vw_Escuela
+ORDER BY SedeID, EscuelaID;
 
-SELECT *
-FROM consulta.vw_UnidadAdministrativa;
+SELECT
+    *
+FROM consulta.vw_UnidadAdministrativa
+ORDER BY SedeID, UnidadAdministrativaID;
 
 REVERT;
 GO
 
+
+/* =========================================================
+   12. Prueba funcional para usuario_occidente
+
+   Debe visualizar únicamente registros con SedeID = 1.
+   ========================================================= */
 
 EXECUTE AS USER = N'usuario_occidente';
 
 SELECT
     USER_NAME() AS UsuarioActual;
 
-SELECT *
-FROM consulta.vw_Escuela;
+SELECT
+    *
+FROM consulta.vw_Escuela
+ORDER BY SedeID, EscuelaID;
 
-SELECT *
-FROM consulta.vw_UnidadAdministrativa;
+SELECT
+    *
+FROM consulta.vw_UnidadAdministrativa
+ORDER BY SedeID, UnidadAdministrativaID;
 
 REVERT;
 GO
