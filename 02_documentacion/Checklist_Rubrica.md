@@ -7,7 +7,7 @@
 | Instalación y configuración del ecosistema | 10 | ✅ Implementado |
 | Hardening plataforma operativa | 5 | ✅ Implementado |
 | Instalación y configuración SGBDR | 5 | ✅ Implementado |
-| Hardening SGBDR | 5 | ⚠️ Parcial |
+| Hardening SGBDR | 5 | ✅ Implementado con excepción controlada |
 | Configuración Antimalware | 1 | ✅ Implementado y verificado |
 | Modelo lógico de datos | 10 | ✅ Implementado |
 | Diseño físico y distribución LUNs | 5 | ✅ Implementado |
@@ -78,7 +78,7 @@
 
 **Estado**
 
-Pendiente completar evidencias específicas CIS SQL Server.
+Hardening verificado en la VM. `ForceEncryption` permanece deshabilitado como excepción controlada por ausencia de un certificado válido asignado a SQL Server.
 
 ---
 
