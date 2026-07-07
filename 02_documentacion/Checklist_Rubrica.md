@@ -8,7 +8,7 @@
 | Hardening plataforma operativa | 5 | ✅ Implementado |
 | Instalación y configuración SGBDR | 5 | ✅ Implementado |
 | Hardening SGBDR | 5 | ⚠️ Parcial |
-| Configuración Antimalware | 1 | ⚠️ Pendiente evidencia |
+| Configuración Antimalware | 1 | ✅ Implementado y verificado |
 | Modelo lógico de datos | 10 | ✅ Implementado |
 | Diseño físico y distribución LUNs | 5 | ✅ Implementado |
 | In-Memory OLTP | 3 | ✅ Implementado |
