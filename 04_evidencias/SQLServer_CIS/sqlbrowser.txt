@@ -1,0 +1,23 @@
+
+UserName            : NT AUTHORITY\LOCALSERVICE
+Description         : Provides SQL Server connection information to client computers.
+DelayedAutoStart    : False
+BinaryPathName      : "C:\Program Files (x86)\Microsoft SQL Server\90\Shared\sqlbrowser.exe"
+StartupType         : Disabled
+Name                : SQLBrowser
+RequiredServices    : {}
+CanPauseAndContinue : False
+CanShutdown         : False
+CanStop             : False
+DisplayName         : SQL Server Browser
+DependentServices   : {}
+MachineName         : .
+ServiceName         : SQLBrowser
+ServicesDependedOn  : {}
+StartType           : Disabled
+ServiceHandle       : 
+Status              : Stopped
+ServiceType         : Win32OwnProcess
+Site                : 
+Container           : 
+
