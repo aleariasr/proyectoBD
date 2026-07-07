@@ -144,7 +144,7 @@ La existencia de capturas o archivos dentro del repositorio no se considera evid
 
 ## Estado
 
-Pendiente de verificación directa en Azure SQL Database PaaS.
+Implementado y verificado directamente en Azure SQL Database PaaS.
 
 ## Distribución de almacenamiento
 
@@ -176,4 +176,4 @@ Pendiente de verificación directa en Azure SQL Database PaaS.
 | JSON | Implementado |
 | REST API | Implementado |
 | Vector Search | Implementado |
-| Azure SQL Database PaaS | Pendiente de verificación |
+| Azure SQL Database PaaS | Implementado y verificado |

@@ -22,7 +22,7 @@
 | External API Calls | 5 | ✅ Implementado |
 | Vector Data and Semantic Search | 5 | ✅ Implementado |
 | Expresiones Regulares Avanzadas | 5 | ✅ Implementado |
-| Azure SQL Database PaaS | 10 | ❌ Pendiente de verificación |
+| Azure SQL Database PaaS | 10 | ✅ Implementado y verificado |
 
 ---
 
@@ -300,13 +300,20 @@ Implementado mediante tres restricciones `CHECK` activas y confiables.
 
 **Evidencias**
 
-- Carpeta: `04_evidencias/AzureSQL`
+- [Base SIGAU en Azure](../04_evidencias/AzureSQL/01_Base_SIGAU_Azure.png)
+- [Tablas en Azure](../04_evidencias/AzureSQL/02_Tablas_Azure.png)
+- [Vistas en Azure](../04_evidencias/AzureSQL/03_Vistas_Azure.png)
+- [Procedimientos en Azure](../04_evidencias/AzureSQL/04_Procedimientos_Azure.png)
+- [Datos en Azure](../04_evidencias/AzureSQL/05_Datos_Azure.png)
+- [Verificación final](../04_evidencias/AzureSQL/06_Verificacion_Final_Azure_SQL.png)
 
 **Estado**
 
-Pendiente de verificación directa en Azure.
+Implementado y verificado directamente en Azure SQL Database.
 
-La existencia de archivos o capturas en el repositorio no se considera evidencia suficiente hasta comprobar la base de datos, los objetos y los datos directamente en Azure SQL Database.
+La base contiene 23 tablas, 23 vistas, 2 procedimientos, 1 función y 2 políticas RLS.
+
+Se excluyeron de forma intencional `seguridad.BitacoraAcceso` y `consulta.vw_BitacoraAcceso` por compatibilidad con el nivel Basic de Azure SQL Database.
 
 ---
 
