@@ -121,37 +121,28 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 
 ![Restore de prueba](04_evidencias/Backups/02_Restore_Test_SIGAU.jpeg)
 
-## Azure SQL Database
+## Azure SQL Database PaaS
 
-### Base de datos desplegada
+La migración de SIGAU a Azure SQL Database PaaS todavía debe verificarse directamente en Azure.
 
-![Base Azure](../04_evidencias/AzureSQL/01_Base_SIGAU_Azure.png)
+La existencia de capturas o archivos dentro del repositorio no se considera evidencia suficiente hasta comprobar:
 
-Demuestra el despliegue exitoso de la base de datos **SIGAU** sobre Azure SQL Database.
+- que el servidor lógico y la base de datos existen;
+- que la conexión funciona correctamente;
+- que las tablas fueron creadas;
+- que las vistas están disponibles;
+- que los procedimientos almacenados son compatibles;
+- que los datos fueron migrados;
+- que las evidencias corresponden al entorno actual del proyecto.
 
-### Tablas migradas
+## Documentación relacionada
 
-![Tablas Azure](../04_evidencias/AzureSQL/02_Tablas_Azure.png)
+- [Azure SQL Database](02_documentacion/Azure_SQL_Database.md)
+- [Evidencias Azure SQL](04_evidencias/AzureSQL)
 
-Evidencia que todas las tablas fueron creadas correctamente en Azure SQL Database.
+## Estado
 
-### Vistas
-
-![Vistas Azure](../04_evidencias/AzureSQL/03_Vistas_Azure.png)
-
-Demuestra que las vistas fueron migradas correctamente a Azure SQL Database.
-
-### Procedimientos almacenados
-
-![Procedimientos Azure](../04_evidencias/AzureSQL/04_Procedimientos_Azure.png)
-
-Demuestra la migración de los procedimientos almacenados a Azure SQL Database.
-
-### Datos migrados
-
-![Datos Azure](../04_evidencias/AzureSQL/05_Datos_Azure.png)
-
-Evidencia que los datos fueron migrados correctamente y que las tablas contienen información en Azure SQL Database.
+Pendiente de verificación directa en Azure SQL Database PaaS.
 
 ## Distribución de almacenamiento
 
@@ -183,4 +174,4 @@ Evidencia que los datos fueron migrados correctamente y que las tablas contienen
 | JSON | Implementado |
 | REST API | Implementado |
 | Vector Search | Implementado |
-| Azure SQL Database PaaS | Implementado |
+| Azure SQL Database PaaS | Pendiente de verificación |

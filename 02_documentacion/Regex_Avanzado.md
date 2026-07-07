@@ -2,73 +2,83 @@
 
 ## Objetivo
 
-Implementar validaciones mediante expresiones regulares avanzadas en SQL Server 2025 para controlar formatos de datos sensibles y académicos dentro de SIGAU.
+Implementar validaciones persistentes mediante expresiones regulares de SQL Server 2025 para controlar formatos de datos sensibles y académicos dentro de SIGAU.
 
 ## Implementación
 
-Se desarrolló el script:
+Las expresiones regulares no se utilizan únicamente en consultas de verificación.
 
-- [02_Regex_Avanzado.sql](../03_sql/07_validaciones/02_Regex_Avanzado.sql)
+Actualmente se encuentran implementadas como restricciones `CHECK` reales dentro de la base de datos.
 
-El script utiliza la función `REGEXP_LIKE()` de SQL Server 2025 para validar información almacenada en tablas del sistema.
+## Restricciones implementadas
 
-## Tablas validadas
+| Restricción | Tabla | Columna |
+|---|---|---|
+| `CK_MedioContactoPersona_Email_Formato` | `core.MedioContactoPersona` | `ValorContacto` |
+| `CK_IdentificacionPersona_Formato` | `core.IdentificacionPersona` | `NumeroIdentificacion` |
+| `CK_Estudiante_Carnet_Formato` | `academico.Estudiante` | `Carnet` |
 
-| Tabla | Campo | Validación |
-|---------|---------|---------|
-| core.MedioContactoPersona | ValorContacto | Correos electrónicos |
-| core.IdentificacionPersona | NumeroIdentificacion | Cédulas nacionales |
-| academico.Estudiante | Carnet | Carnés universitarios |
+Las tres restricciones fueron verificadas con los siguientes valores:
 
-## Expresiones utilizadas
+- `is_disabled = 0`
+- `is_not_trusted = 0`
 
-### Correos electrónicos
+Esto confirma que las restricciones están activas y que SQL Server confía en su validación.
 
-```regex
-^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$
-```
+## Formatos controlados
 
-### Cédulas nacionales
+### Correo electrónico
 
-```regex
-^[1-9]-?[0-9]{4}-?[0-9]{4}$
-```
+Expresión utilizada:
 
-### Carnés universitarios
+    ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$
 
-```regex
-^[A-Z][0-9][A-Z][0-9]{3}$
-```
+La validación se aplica cuando `TipoMedioContactoID = 1`.
+
+### Identificación nacional
+
+Expresión utilizada:
+
+    ^[1-9]-?[0-9]{4}-?[0-9]{4}$
+
+Ejemplos válidos:
+
+- `1-1010-1010`
+- `110101010`
+
+### Carné universitario
+
+Expresión utilizada:
+
+    ^[A-Z][0-9][A-Z][0-9]{3}$
+
+Ejemplo válido:
+
+- `C4C010`
 
 ## Resultado de las validaciones
 
-| Tipo de validación | Total registros | Válidos | Inválidos |
-|---------|---------:|---------:|---------:|
+| Validación | Registros | Válidos | Inválidos |
+|---|---:|---:|---:|
 | Correos electrónicos | 30 | 30 | 0 |
-| Cédulas nacionales | 30 | 30 | 0 |
-| Carnés universitarios | 10 | 10 | 0 |
+| Identificaciones | 30 | 30 | 0 |
+| Carnés | 10 | 10 | 0 |
 
-Todas las validaciones ejecutadas sobre los datos de prueba de SIGAU produjeron resultados válidos.
+Todos los registros actuales cumplen con los formatos definidos.
+
+## Scripts relacionados
+
+- [02_Regex_Avanzado.sql](../03_sql/07_validaciones/02_Regex_Avanzado.sql)
+- [01_SIGAU_CreacionBD_v1_0.sql](../03_sql/01_creacion/01_SIGAU_CreacionBD_v1_0.sql)
+- [01_Pruebas_Finales.sql](../03_sql/07_validaciones/01_Pruebas_Finales.sql)
 
 ## Evidencias
 
-### Ejecución de validaciones Regex
-
 ![Validación Regex](../04_evidencias/Regex/01_Validacion_Regex_Avanzado.jpeg)
 
-Archivo de evidencia:
-
 - [01_Validacion_Regex_Avanzado.jpeg](../04_evidencias/Regex/01_Validacion_Regex_Avanzado.jpeg)
+- [SIGAU_Esquema_Real_VM.sql](../04_evidencias/SQLServer/SIGAU_Esquema_Real_VM.sql)
 
-## Archivos relacionados
+## Estado
 
-### Scripts
-
-- [02_Regex_Avanzado.sql](../03_sql/07_validaciones/02_Regex_Avanzado.sql)
-- [01_Pruebas_Finales.sql](../03_sql/07_validaciones/01_Pruebas_Finales.sql)
-
-### Documentación
-
-- [Modelo_Datos.md](Modelo_Datos.md)
-- [Seguridad.md](Seguridad.md)
-- [Checklist_Rubrica.md](Checklist_Rubrica.md)
+Implementado mediante restricciones `CHECK`, activo y verificado en la VM.

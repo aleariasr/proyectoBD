@@ -19,10 +19,10 @@
 | Row Level Security | 2 | ✅ Implementado |
 | Auditoría SQL Server | 5 | ✅ Implementado |
 | Serialización JSON | 5 | ✅ Implementado |
-| External API Calls | 5 | ⚠️ En proceso |
-| Vector Data and Semantic Search | 5 | ⚠️ En proceso |
-| Expresiones Regulares Avanzadas | 5 | ❌ Pendiente |
-| Azure SQL Database PaaS | 10 | ❌ Pendiente |
+| External API Calls | 5 | ✅ Implementado |
+| Vector Data and Semantic Search | 5 | ✅ Implementado |
+| Expresiones Regulares Avanzadas | 5 | ✅ Implementado |
+| Azure SQL Database PaaS | 10 | ❌ Pendiente de verificación |
 
 ---
 
@@ -230,9 +230,15 @@ Pendiente completar evidencias específicas CIS SQL Server.
 
 - [External API Calls](External_API_Calls.md)
 
+**Evidencia técnica**
+
+- [SIGAU_Esquema_Real_VM.sql](../04_evidencias/SQLServer/SIGAU_Esquema_Real_VM.sql)
+
 **Estado**
 
-En proceso.
+Implementado y verificado funcionalmente en la VM.
+
+La evidencia visual específica todavía está pendiente.
 
 ---
 
@@ -246,25 +252,38 @@ En proceso.
 
 - [Vector Search](Vector_Search.md)
 
+**Evidencia técnica**
+
+- [SIGAU_Esquema_Real_VM.sql](../04_evidencias/SQLServer/SIGAU_Esquema_Real_VM.sql)
+
 **Estado**
 
-En proceso.
+Implementado y verificado mediante `VECTOR(5)` y `VECTOR_DISTANCE`.
+
+La evidencia visual específica todavía está pendiente.
 
 ---
 
 # Expresiones Regulares Avanzadas
 
-**Script**
+**Scripts**
 
+- [02_Regex_Avanzado.sql](../03_sql/07_validaciones/02_Regex_Avanzado.sql)
+- [01_SIGAU_CreacionBD_v1_0.sql](../03_sql/01_creacion/01_SIGAU_CreacionBD_v1_0.sql)
 - [01_Pruebas_Finales.sql](../03_sql/07_validaciones/01_Pruebas_Finales.sql)
 
 **Documentación**
 
 - [Regex Avanzado](Regex_Avanzado.md)
 
+**Evidencias**
+
+- [01_Validacion_Regex_Avanzado.jpeg](../04_evidencias/Regex/01_Validacion_Regex_Avanzado.jpeg)
+- [SIGAU_Esquema_Real_VM.sql](../04_evidencias/SQLServer/SIGAU_Esquema_Real_VM.sql)
+
 **Estado**
 
-Pendiente.
+Implementado mediante tres restricciones `CHECK` activas y confiables.
 
 ---
 
@@ -280,23 +299,25 @@ Pendiente.
 
 **Estado**
 
-Pendiente.
+Pendiente de verificación directa en Azure.
+
+La existencia de archivos o capturas en el repositorio no se considera evidencia suficiente hasta comprobar la base de datos, los objetos y los datos directamente en Azure SQL Database.
 
 ---
 
 # Avance General del Proyecto
 
 | Área | Avance |
-|---------|---------|
+|---|---:|
 | Infraestructura | 100% |
 | SQL Server | 100% |
 | Seguridad | 95% |
 | Auditoría | 100% |
 | Recuperación | 100% |
 | JSON | 100% |
-| API REST | 60% |
-| Vector Search | 40% |
-| Regex | 0% |
+| API REST | 100% |
+| Vector Search | 100% |
+| Regex | 100% |
 | Azure SQL Database | 0% |
 
-**Avance global estimado: 90
+**Avance global estimado: pendiente de recalcular después de verificar Azure SQL Database PaaS y completar las evidencias visuales restantes.**
