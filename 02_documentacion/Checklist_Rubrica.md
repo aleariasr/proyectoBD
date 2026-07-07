@@ -323,13 +323,13 @@ Se excluyeron de forma intencional `seguridad.BitacoraAcceso` y `consulta.vw_Bit
 |---|---:|
 | Infraestructura | 100% |
 | SQL Server | 100% |
-| Seguridad | 95% |
+| Seguridad | 100% |
 | Auditoría | 100% |
 | Recuperación | 100% |
 | JSON | 100% |
 | API REST | 100% |
 | Vector Search | 100% |
 | Regex | 100% |
-| Azure SQL Database | 0% |
+| Azure SQL Database | 100% |
 
 **Avance global estimado: pendiente de recalcular después de verificar Azure SQL Database PaaS y completar las evidencias visuales restantes.**
