@@ -211,6 +211,17 @@ CREATE TABLE core.IdentificacionPersona (
 ) ON FG_SIGAU_CORE;
 GO
 
+ALTER TABLE core.IdentificacionPersona
+ADD CONSTRAINT CK_IdentificacionPersona_Formato
+CHECK
+(
+    REGEXP_LIKE(
+        NumeroIdentificacion,
+        '^[1-9]-?[0-9]{4}-?[0-9]{4}$'
+    )
+);
+GO
+
 CREATE TABLE core.DireccionPersona (
     DireccionPersonaID INT IDENTITY(1,1) NOT NULL,
     PersonaID INT NOT NULL,
@@ -288,6 +299,17 @@ CREATE TABLE academico.Estudiante (
     CONSTRAINT FK_Estudiante_Persona FOREIGN KEY (PersonaID) REFERENCES core.Persona(PersonaID),
     CONSTRAINT FK_Estudiante_Escuela FOREIGN KEY (EscuelaID) REFERENCES academico.Escuela(EscuelaID)
 ) ON FG_SIGAU_ACADEMICO;
+GO
+
+ALTER TABLE academico.Estudiante
+ADD CONSTRAINT CK_Estudiante_Carnet_Formato
+CHECK
+(
+    REGEXP_LIKE(
+        Carnet,
+        '^[A-Z][0-9][A-Z][0-9]{3}$'
+    )
+);
 GO
 
 CREATE TABLE academico.PeriodoLectivo (
@@ -475,25 +497,50 @@ BEGIN
     SET NOCOUNT ON;
 
     DECLARE @response NVARCHAR(MAX);
+    DECLARE @codigoRespuesta INT;
 
     EXEC sys.sp_invoke_external_rest_endpoint
         @url = N'https://jsonplaceholder.typicode.com/todos/1',
         @method = N'GET',
         @response = @response OUTPUT;
 
-    INSERT INTO api.ConsultaExterna (Endpoint, CodigoRespuesta, RespuestaJSON)
-    VALUES ('https://jsonplaceholder.typicode.com/todos/1', 200, @response);
+    SET @codigoRespuesta =
+        TRY_CONVERT
+        (
+            INT,
+            JSON_VALUE(
+                @response,
+                '$.response.status.http.code'
+            )
+        );
 
-    SELECT @response AS RespuestaJSON;
+    INSERT INTO api.ConsultaExterna
+    (
+        Endpoint,
+        CodigoRespuesta,
+        RespuestaJSON
+    )
+    VALUES
+    (
+        N'https://jsonplaceholder.typicode.com/todos/1',
+        COALESCE(@codigoRespuesta, 0),
+        @response
+    );
+
+    SELECT
+        @codigoRespuesta AS CodigoRespuesta,
+        @response AS RespuestaJSON;
 END;
 GO
 
 /* =========================================================
-   VECTOR SEARCH
-   Nota:
-   - Se deja la columna VECTOR en academico.Curso.
-   - El procedimiento y el índice vectorial se crearán después
-     de poblar datos y validar sintaxis exacta en tu build RTM.
+   VECTOR DATA
+
+   La tabla academico.Curso contiene una columna VECTOR(5).
+   La carga de vectores y la búsqueda por similitud mediante
+   VECTOR_DISTANCE se encuentran en:
+
+   03_sql/06_json_api_vector/03_VectorSearch.sql
    ========================================================= */
 
 /* =========================================================
@@ -545,6 +592,15 @@ GO
 CREATE VIEW consulta.vw_BitacoraAcceso AS SELECT * FROM seguridad.BitacoraAcceso;
 GO
 CREATE VIEW consulta.vw_ConsultaExterna AS SELECT * FROM api.ConsultaExterna;
+GO
+CREATE VIEW consulta.vw_UsuarioSede
+AS
+SELECT
+    UsuarioSedeID,
+    UsuarioBD,
+    SedeID,
+    Estado
+FROM seguridad.UsuarioSede;
 GO
 
 /* =========================================================
