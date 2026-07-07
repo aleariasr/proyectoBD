@@ -54,6 +54,7 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 - [Expresiones Regulares](02_documentacion/Regex_Avanzado.md)
 - [Hardening SQL Server](02_documentacion/Hardening_SQL_Server.md)
 - [Antimalware SQL Server](02_documentacion/Antimalware_SQL_Server.md)
+- [Auditoría SQL Server](02_documentacion/Auditoria.md)
 
 ## Azure e infraestructura
 
@@ -82,7 +83,8 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 
 ### Auditoría
 
-- [Auditoría](03_sql/04_auditoria/01_Audit_SIGAU.sql)
+- [Script de auditoría](03_sql/04_auditoria/01_Audit_SIGAU.sql)
+- [Documentación de auditoría](02_documentacion/Auditoria.md)
 
 ### Backup y Restore
 
@@ -168,7 +170,7 @@ Pendiente de verificación directa en Azure SQL Database PaaS.
 | Roles | Implementado |
 | Dynamic Data Masking | Implementado |
 | Row Level Security | Implementado |
-| Auditoría SQL | Implementado, falta evidencia visual adicional |
+| Auditoría SQL | Implementado y verificado |
 | Backup completo | Implementado |
 | Restore de prueba | Implementado |
 | JSON | Implementado |

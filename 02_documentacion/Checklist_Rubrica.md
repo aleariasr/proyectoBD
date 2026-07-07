@@ -189,9 +189,14 @@ Pendiente completar evidencias específicas CIS SQL Server.
 
 - [01_Audit_SIGAU.sql](../03_sql/04_auditoria/01_Audit_SIGAU.sql)
 
+**Documentación**
+
+- [Auditoría SQL Server](Auditoria.md)
+
 **Evidencias**
 
-- Carpeta: `04_evidencias/Auditoria`
+- [Auditoría de servidor](../04_evidencias/Auditoria/01_ServerAudit_SIGAU.jpeg)
+- [Auditoría de base de datos](../04_evidencias/Auditoria/02_DatabaseAudit_SIGAU.jpeg)
 
 ---
 

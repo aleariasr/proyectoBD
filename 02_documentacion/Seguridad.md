@@ -185,24 +185,35 @@ Este orden evita conflictos por `SCHEMABINDING` y permite ejecutar el script nue
 
 Se configuró auditoría a nivel de servidor y base de datos.
 
-Objetos:
+Objetos principales:
 
-- Audit_SIGAU_Server
-- Audit_SIGAU_Database
+- `Audit_LoginTracking`
+- `Audit_LoginTracking_Spec`
+- `Audit_SIGAU_Server`
+- `Audit_SIGAU_Database`
 
-Ruta:
+Las auditorías se encuentran habilitadas y en estado `STARTED`.
 
-H:\SQLServer\Audit\SIGAU\
+Se registran:
 
-Eventos auditados:
+- inicios de sesión exitosos y fallidos;
+- `SELECT`;
+- `INSERT`;
+- `UPDATE`;
+- `DELETE`;
+- cambios de objetos;
+- cambios de permisos;
+- cambios de usuarios y roles.
 
-- SELECT
-- INSERT
-- UPDATE
-- DELETE
-- Cambios de objetos
-- Cambios de permisos
-- Cambios de principales
+Los archivos de SIGAU se almacenan en:
+
+`H:\SQLServer\Audit\SIGAU\`
+
+La verificación confirmó eventos reales exitosos y fallidos almacenados en archivos `.sqlaudit`.
+
+Más información:
+
+- [Auditoría SQL Server](Auditoria.md)
 
 ## Bitácora In-Memory
 
@@ -248,4 +259,5 @@ Evidencias:
 
 - [Hardening SQL Server](Hardening_SQL_Server.md)
 - [Antimalware SQL Server](Antimalware_SQL_Server.md)
+- [Auditoría SQL Server](Auditoria.md)
 - [Hardening CIS Windows Server](../06_azure/Hardening_CIS.md)
