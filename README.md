@@ -123,20 +123,6 @@ Aplicar mejores prácticas de administración de bases de datos mediante un ecos
 
 ![Restore de prueba](04_evidencias/Backups/02_Restore_Test_SIGAU.jpeg)
 
-## Azure SQL Database PaaS
-
-La migración de SIGAU a Azure SQL Database PaaS todavía debe verificarse directamente en Azure.
-
-La existencia de capturas o archivos dentro del repositorio no se considera evidencia suficiente hasta comprobar:
-
-- que el servidor lógico y la base de datos existen;
-- que la conexión funciona correctamente;
-- que las tablas fueron creadas;
-- que las vistas están disponibles;
-- que los procedimientos almacenados son compatibles;
-- que los datos fueron migrados;
-- que las evidencias corresponden al entorno actual del proyecto.
-
 ## Documentación relacionada
 
 - [Azure SQL Database](02_documentacion/Azure_SQL_Database.md)
